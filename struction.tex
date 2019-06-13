@@ -1,0 +1,158 @@
+%----------------------------------------------------------------------------------------
+%	宏包设置
+%----------------------------------------------------------------------------------------
+
+
+% 浮动体
+
+\usepackage{graphicx} % 插图
+\graphicspath{{image/}} % 图片目录
+
+\usepackage[section]{placeins} % 防止浮动体跨区
+
+% --------
+
+% 排版专用
+
+\usepackage{nag} % 检查过时指令
+
+\usepackage{microtype} % 微排版
+
+\usepackage{fancyhdr} % 修改页眉
+
+
+% \usepackage{scrextend} 
+% % 修改脚注样式
+% \deffootnote[1.5em]{1.5em}{1em}{〔\thefootnotemark〕\space}
+% \deffootnotemark{\textsuperscript{〔\thefootnotemark〕}}
+% NOTE: 还要调整基线
+
+
+%----------------------------------------------------------------------------------------
+%	Input and Fonts
+%----------------------------------------------------------------------------------------
+
+% 使用 XeLaTeX 
+\usepackage{xltxtra,xunicode}
+
+\usepackage{textcomp} % 扩展特殊字符
+
+% 使用 Noto CJK
+
+\newCJKfontfamily[notoserifcjksc]\notoserif{Noto Serif CJK SC}
+\newCJKfontfamily[notosanscjksc]\notosans{Noto Sans CJK SC}
+
+\newfontfamily\wnotoserif{Noto Serif CJK SC}
+\newfontfamily\wnotosans{Noto Sans CJK SC}
+
+\setCJKmainfont{Noto Serif CJK SC}
+
+% 因为有些字 Fandol 没有 所以使用 Noto Serif
+% 这是一个不优雅的处理，先这样
+
+\renewcommand{\emph}[1]{{\em \kaishu #1}}
+\newcommand{\mt}{\ttfamily \fangsong} % mt -> mechinetalk
+\newcommand{\rt}{\sffamily \notosans} % rt -> radiotalk
+
+%----------------------------------------------------------------------------------------
+%	数学相关
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{siunitx}
+
+%----------------------------------------------------------------------------------------
+%	LINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{url}
+\usepackage[setpagesize=false,unicode=false,xetex]{hyperref}
+
+\hypersetup{breaklinks=true,
+            pdfauthor={RandomQuantum},
+            pdftitle={辐射小马国：粉色双眸}
+            }
+
+%----------------------------------------------------------------------------------------
+%	环境
+%----------------------------------------------------------------------------------------
+
+\newenvironment{intro}{\begin{flushleft}\slshape \kaishu}
+{\end{flushleft}\medskip}
+
+\newenvironment{song}{\begin{flushright}\itshape \kaishu}{\end{flushright}}
+
+\newcommand\daytimeplace[4]{
+  \begin{center}
+    \ttfamily
+    第 #1 天
+
+    大约时间：#2
+
+    地点：#3
+
+    Place: #4
+  \end{center}
+}
+
+\newcommand\unknowndaytimeplace{
+  \begin{center}
+    \ttfamily
+    日期：NaN
+
+    时间：NaN
+    
+    地点：NaN
+  \end{center}
+}
+
+\font\eightssi=cmssqi8
+
+\newenvironment{motto}{
+~\vfill
+\begin{flushright}
+  \eightssi \fangsong
+}{\end{flushright}}
+
+\newenvironment{note}{
+\paragraph{蹄注}}{\bigskip}
+
+\newcommand\printstatus[6]{
+\begin{flushleft}
+\textbf{帕比的属性}
+\end{flushleft}
+
+\begin{itemize}
+\item 力量：#1
+\item 感知：#2
+\item 魅力：#3  
+\item 智力：#4
+\item 敏捷：#5
+\item 幸运：#6
+\end{itemize}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	目录
+%----------------------------------------------------------------------------------------
+
+\setcounter{secnumdepth}{0} % 取消节编号
+
+
+%----------------------------------------------------------------------------------------
+%	定义符号与缩写
+%----------------------------------------------------------------------------------------
+
+% 第一种样式
+% \newcommand{\horizonline}{
+%     \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+% }
+
+% 第二种样式
+\newcommand{\horizonline}{
+    \begin{center}\includegraphics[width=0.5\linewidth]{image_line.png}\end{center}
+}
+
+
+
