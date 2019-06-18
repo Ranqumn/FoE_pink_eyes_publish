@@ -13,15 +13,17 @@
     - cover.tex
     - copyright.tex
     - preface.tex
-    - chap01.tex
-    - ...
-    - chap20.tex
-    - afterword.tex
+    - chinese
+        - chap01.tex
+        - ...
+        - chap20.tex
+        - afterword.tex
+    - english
+        - chap01.tex
+        - ...
+        - chap20.tex
+        - afterword.tex
     - acknowledgement.tex
-- main.pdf
-    - 文档输出
-- archive
-    - 原始排版存档
 
 ## TODO & Issues
 
@@ -34,7 +36,7 @@
 
 - 在每一个时间地点处换页
 - 版心重新制作
-- 将所有英文专有名词放入注释中
+- ~~将所有英文专有名词放入注释中~~
 - 字体穿透数学公式
 
 ### 需要检查
@@ -64,30 +66,16 @@
 - 额外字体
     - Noto Serif CJK SC
     - Noto Sans CJK SC
+    - Sarasa Gothic SC
+
 
 ## 存档
-
-### 正则表达式
-
-```
-\\textbf{第(\w+)天}\n\n\\textbf{大约时间：(.+)}\n\n\\textbf{地点：(.+)}
-\\daytimeplace{$1}{$2}{$3}{}
- 
-(:\w\w)([AP]M)
-$1 $2
- 
-\includegraphics[width=2.4in,height=0.31944in]{media/image3.png}
-\\includegraphics\[.+\]{media/image3\.png}
-\\horizonline
-
-(\w)’
-$1'
-```
 
 ### 文案编辑
 
 - 呯 -> 乒
-- 艹 -> 肏
+- 操 艹 -> 肏
+- 马 & 机 -> 马–机
 
 具体部分修改见注释。
 

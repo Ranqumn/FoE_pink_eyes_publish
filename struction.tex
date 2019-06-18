@@ -16,6 +16,7 @@
 
 \usepackage{nag} % 检查过时指令
 
+\usepackage[english]{babel}
 \usepackage{microtype} % 微排版
 
 \usepackage{fancyhdr} % 修改页眉
@@ -41,9 +42,14 @@
 
 \newCJKfontfamily[notoserifcjksc]\notoserif{Noto Serif CJK SC}
 \newCJKfontfamily[notosanscjksc]\notosans{Noto Sans CJK SC}
+\newCJKfontfamily[sarasagothicsc]\sarasagothic{Sarasa Gothic SC}
+
 
 \newfontfamily\wnotoserif{Noto Serif CJK SC}
 \newfontfamily\wnotosans{Noto Sans CJK SC}
+\newfontfamily\wsarasagothic{Sarasa Gothic SC}
+
+% 注意西文字体需要更换
 
 \setCJKmainfont{Noto Serif CJK SC}
 
@@ -53,6 +59,7 @@
 \renewcommand{\emph}[1]{{\em \kaishu #1}}
 \newcommand{\mt}{\ttfamily \fangsong} % mt -> mechinetalk
 \newcommand{\rt}{\sffamily \notosans} % rt -> radiotalk
+\newcommand{\py}[1]{{\wsarasagothic \sarasagothic #1}} % py -> 怕音
 
 %----------------------------------------------------------------------------------------
 %	数学相关
@@ -91,7 +98,7 @@
 
     地点：#3
 
-    Place: #4
+    LOCATION: #4
   \end{center}
 }
 
@@ -106,6 +113,28 @@
   \end{center}
 }
 
+\newcommand\englishdaytimeplace[3]{
+  \begin{center}
+    \ttfamily
+    Day #1
+
+    TIME approximately #2
+
+    LOCATION: #3
+  \end{center}
+}
+
+\newcommand\englishunknowndaytimeplace{
+  \begin{center}
+    \ttfamily
+    DAY N.A.
+
+    TIME N.A.
+    
+    LOCATION N.A.
+  \end{center}
+}
+
 \font\eightssi=cmssqi8
 
 \newenvironment{motto}{
@@ -117,7 +146,10 @@
 \newenvironment{note}{
 \paragraph{蹄注}}{\bigskip}
 
-\newcommand\printstatus[6]{
+\newenvironment{engnote}{
+\paragraph{Hoovenote}}{\bigskip}
+
+\newcommand\printstatus[7]{
 \begin{flushleft}
 \textbf{帕比的属性}
 \end{flushleft}
@@ -125,10 +157,27 @@
 \begin{itemize}
 \item 力量：#1
 \item 感知：#2
-\item 魅力：#3  
-\item 智力：#4
-\item 敏捷：#5
-\item 幸运：#6
+\item 耐力：#3
+\item 魅力：#4
+\item 智力：#5
+\item 敏捷：#6
+\item 幸运：#7
+\end{itemize}
+}
+
+\newcommand\engprintstatus[7]{
+\begin{flushleft}
+\textbf{Puppy's S.P.E.C.I.A.L.}
+\end{flushleft}
+
+\begin{itemize}
+\item Strength: #1
+\item Perception: #2
+\item Endurance: #3
+\item Charisma: #4
+\item Intelligence: #5
+\item Agility: #6
+\item Luck: #7
 \end{itemize}
 }
 

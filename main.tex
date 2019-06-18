@@ -2,7 +2,7 @@
 
 \input{struction.tex}
 
-\title{辐射小马国 \\ Fallout Equestria \bigskip \\ {\Large 粉色双眸 \\ Pink Eyes}}
+\title{Fallout Equestria \\ 辐射小马国 \bigskip \\ {\Large Pink Eyes \\ 粉色双眸}}
 \author{Mimezinga \and MadCatMKII}
 \date{}
 
@@ -20,30 +20,75 @@
 
 \mainmatter % 正文开始
 
-\input{chaps/chap01.tex}
-\input{chaps/chap02.tex}
-\input{chaps/chap03.tex}
-\input{chaps/chap04.tex}
-\input{chaps/chap05.tex}
-\input{chaps/chap06.tex}
-\input{chaps/chap07.tex}
-\input{chaps/chap08.tex}
-\input{chaps/chap09.tex}
-\input{chaps/chap10.tex}
-\input{chaps/chap11.tex}
-\input{chaps/chap12.tex}
-\input{chaps/chap13.tex}
-\input{chaps/chap14.tex}
-\input{chaps/chap15.tex}
-\input{chaps/chap16.tex}
-\input{chaps/chap17.tex}
-\input{chaps/chap18.tex}
-\input{chaps/chap19.tex}
-\input{chaps/chap20.tex}
+
+\ctexset{
+part/name = {Part~,},
+part/number = \thepart,
+chapter/name = {Chapter~,},
+chapter/number = \thechapter
+}
+
+\part{English Version}
+
+\input{chaps/english/chap01.tex}
+\input{chaps/english/chap02.tex}
+\input{chaps/english/chap03.tex}
+\input{chaps/english/chap04.tex}
+\input{chaps/english/chap05.tex}
+\input{chaps/english/chap06.tex}
+\input{chaps/english/chap07.tex}
+\input{chaps/english/chap08.tex}
+\input{chaps/english/chap09.tex}
+\input{chaps/english/chap10.tex}
+\input{chaps/english/chap11.tex}
+\input{chaps/english/chap12.tex}
+\input{chaps/english/chap13.tex}
+\input{chaps/english/chap14.tex}
+\input{chaps/english/chap15.tex}
+\input{chaps/english/chap16.tex}
+\input{chaps/english/chap17.tex}
+\input{chaps/english/chap18.tex}
+\input{chaps/english/chap19.tex}
+\input{chaps/english/chap20.tex}
+
+
+\ctexset{
+part/name = {第,部分},
+part/number = \chinese{part},
+chapter/name = {第,章},
+chapter/number = \chinese{chapter}
+}
+
+\part{中译版}
+\setcounter{chapter}{0}
+
+\input{chaps/chinese/chap01.tex}
+\input{chaps/chinese/chap02.tex}
+\input{chaps/chinese/chap03.tex}
+\input{chaps/chinese/chap04.tex}
+\input{chaps/chinese/chap05.tex}
+\input{chaps/chinese/chap06.tex}
+\input{chaps/chinese/chap07.tex}
+\input{chaps/chinese/chap08.tex}
+\input{chaps/chinese/chap09.tex}
+\input{chaps/chinese/chap10.tex}
+\input{chaps/chinese/chap11.tex}
+\input{chaps/chinese/chap12.tex}
+\input{chaps/chinese/chap13.tex}
+\input{chaps/chinese/chap14.tex}
+\input{chaps/chinese/chap15.tex}
+\input{chaps/chinese/chap16.tex}
+\input{chaps/chinese/chap17.tex}
+\input{chaps/chinese/chap18.tex}
+\input{chaps/chinese/chap19.tex}
+\input{chaps/chinese/chap20.tex}
+
+
 
 \backmatter % 后记开始
 
-\input{chaps/afterword.tex}
+\input{chaps/english/afterword.tex}
+\input{chaps/chinese/afterword.tex}
 \input{chaps/acknowledgement.tex}
 
 
