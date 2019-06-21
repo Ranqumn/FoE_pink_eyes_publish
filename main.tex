@@ -16,6 +16,10 @@
 \input{chaps/introduction.tex}
 \input{chaps/preface.tex}
 
+
+\ctexset{
+    contentsname = Contents \quad 目录
+}
 \tableofcontents
 
 \mainmatter % 正文开始
@@ -84,8 +88,14 @@ chapter/number = \chinese{chapter}
 \input{chaps/chinese/chap20.tex}
 
 
-
 \backmatter % 后记开始
+
+\ctexset{
+part/name = ,
+part/number =
+}
+
+\part{Afterword \quad 后记}
 
 \input{chaps/english/afterword.tex}
 \input{chaps/chinese/afterword.tex}
