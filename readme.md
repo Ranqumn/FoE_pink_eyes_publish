@@ -24,6 +24,17 @@
         - chap20.tex
         - afterword.tex
     - acknowledgement.tex
+- image
+    - cover.png
+        - 封面在此
+    - image_fimfiction_cover.jpeg
+        - FimFiction 站上的封面
+    - image_line.png
+    - image_title.png
+    - image01.png
+    - image02.png
+    - ...
+    - image22.png
 
 ## TODO & Issues
 

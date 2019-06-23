@@ -21,6 +21,7 @@
 
 \usepackage{fancyhdr} % 修改页眉
 
+\usepackage[b5paper]{geometry}
 
 % \usepackage{scrextend} 
 % % 修改脚注样式
@@ -37,6 +38,8 @@
 \usepackage{xltxtra,xunicode}
 
 \usepackage{textcomp} % 扩展特殊字符
+
+\usepackage[htt]{hyphenat} % 等距字体 允许词可从中间断行
 
 % 使用 Noto CJK
 
@@ -80,7 +83,19 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{url}
-% \usepackage[setpagesize=false,unicode=false,xetex]{hyperref}
+
+% 强制 URL 换行 via: https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+  \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+  \do\Y\do\Z}
+
+
+
 \usepackage[xetex]{hyperref}
 
 \hypersetup{breaklinks=true,
