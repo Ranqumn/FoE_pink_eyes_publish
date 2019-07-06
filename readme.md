@@ -1,56 +1,23 @@
+# 概述
+
 ## 描述
 
 《辐射小马国：粉色双眸》的重排版。
 
 亦是本人对于文案「写作—排版—发布」工作流的一次尝试。
 
-## 项目结构
-
-- readme.md
-- main.tex
-- struction.tex
-- chaps
-    - cover.tex
-    - copyright.tex
-    - preface.tex
-    - chinese
-        - chap01.tex
-        - ...
-        - chap20.tex
-        - afterword.tex
-    - english
-        - chap01.tex
-        - ...
-        - chap20.tex
-        - afterword.tex
-    - acknowledgement.tex
-- image
-    - cover.png
-        - 封面在此
-    - image_fimfiction_cover.jpeg
-        - FimFiction 站上的封面
-    - image_line.png
-    - image_title.png
-    - image01.png
-    - image02.png
-    - ...
-    - image22.png
-
 ## TODO & Issues
 
 ### 已知问题
 
-- 目录 `hyperref` 跳转错误
-  - 有没有大佬会修？
-- 标点避头尾
-- 楷体字体标点压缩不正确
+- 某些地方标点使用过多，导致 overfull（部分解决）
 
 ### 是否需要？
 
-- 在每一个时间地点处换页
-- 版心重新制作
-- ~~将所有英文专有名词放入注释中~~
+- 分割线与时间地点指示不分离？
+- 分割线与时间地点指示换页？
 - 字体穿透数学公式
+- 遵照英文版把省略号修改为破折号
 
 ### 需要检查
 
@@ -65,34 +32,45 @@
 - 封面设计
 
 
+### 已解决
+
+- [X] ~~调整唱歌部分的引用格式~~ 
+- [X] ~~时间地点指示不分离~~
+- [X] ~~中文部分全部使用全角括号~~
+- [X] ~~英文部分等宽字体文本排版断行~~
+- [X] ~~目录的 `hyperref` 错误~~
+- [X] ~~B5 版心重新制作使得尾行对齐~~
+- [X] ~~将所有英文专有名词放入注释中~~
+
 ## 协议
 
 由于涉及著作权，本文档并非完全开源，请勿商用。
 
 详情见版权页。
 
+### 字体协议
+
+见各字体的协议
 
 ## 编译环境
 
-- TeX Live 2019
 - XeLaTeX
-- 额外字体
+- 额外字体需安装
     - Noto Serif CJK SC
     - Noto Sans CJK SC
     - Sarasa Gothic SC
+    - FreeSans
+    - Font Awesome 5 Free
+    - Raintree Regular
 
-
-## 存档
-
-### 文案编辑
+## 文案编辑
 
 - 呯 -> 乒
 - 操 艹 -> 肏
+- 草泥马 -> 肏你妈
 - 马 & 机 -> 马–机
 
 具体部分修改见注释。
-
-
 
 
 

@@ -8,7 +8,8 @@
 \usepackage{graphicx} % 插图
 \graphicspath{{image/}} % 图片目录
 
-\usepackage[section]{placeins} % 防止浮动体跨区
+% \usepackage[section]{placeins} % 防止浮动体跨区 NOTE: 用 float 来实现
+\usepackage{float} % 用来钉死浮动体
 
 % --------
 
@@ -19,9 +20,15 @@
 % \usepackage[english]{babel}
 \usepackage{microtype} % 微排版
 
-\usepackage{fancyhdr} % 修改页眉
+% 重新制作适应 B5 的版心；使得每个段落最后一行可以对齐（除了特殊情况之外）。
 
-\usepackage[b5paper]{geometry}
+% \zijianju 每个字的间距
+\newlength{\zijianju}
+\setlength{\zijianju}{10.5bp} % 五号字 10.5 bp
+
+\usepackage[b5paper,
+textwidth= 33\zijianju]{geometry} % 每行 33 个字的宽度
+
 
 % \usepackage{scrextend} 
 % % 修改脚注样式
@@ -39,7 +46,9 @@
 
 \usepackage{textcomp} % 扩展特殊字符
 
-\usepackage[htt]{hyphenat} % 等距字体 允许词可从中间断行
+% \usepackage[htt]{hyphenat} % 等距字体 允许词可从中间断行 NOTE: 不需要了，使用加载字体解决
+
+\defaultfontfeatures{Ligatures=TeX} % fontspec 使用 TeX 的语法打特殊字符
 
 % 使用 Noto CJK
 
@@ -48,21 +57,39 @@
 \newCJKfontfamily[sarasagothicsc]\sarasagothic{Sarasa Gothic SC}
 
 
-\newfontfamily\wnotoserif{Noto Serif CJK SC}
-\newfontfamily\wnotosans{Noto Sans CJK SC}
-\newfontfamily\wsarasagothic{Sarasa Gothic SC}
+\newfontfamily\freesans{FreeSans}
+\newfontfamily\lmmono{lmmono10-regular.otf} % Latin Modern Mono 默认的等距字体 NOTE: 该字体不区分前后引号
 
-% 注意西文字体需要更换
+\newfontfamily\raintree{Raintree} % 英文发布版带字体 注意版权问题
+
+\newfontfamily\awesomefont{Font Awesome 5 Free Solid}
 
 \setCJKmainfont{Noto Serif CJK SC}
 
 % 因为有些字 Fandol 没有 所以使用 Noto Serif
 % 这是一个不优雅的处理，先这样
 
-\renewcommand{\emph}[1]{{\em \kaishu #1}}
-\newcommand{\mt}{\ttfamily \fangsong} % mt -> mechinetalk
+%----------------------------------------------------------------------------------------
+% 标记的样式设定
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\emph}[1]{{\itshape \kaishu #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
+
+% \newcommand{\mt}{\lmmono \fangsong} % mt -> mechinetalk NOTE: 使用 \lmmono 使得断词正确
+\newcommand{\mt}{\raintree \fangsong} % mt -> mechinetalk NOTE: 另外一种样式
+% \newcommand{\mt}{\wsarasamono \sarasamono} % mt -> mechinetalk NOTE: 另外一种样式
+
 \newcommand{\rt}{\sffamily \notosans} % rt -> radiotalk
-\newcommand{\py}[1]{{\wsarasagothic \sarasagothic #1}} % py -> 怕音
+\newcommand{\py}{\freesans \sarasagothic} % py -> 怕音
+
+\newcommand{\mtpr}[1]{{\mt #1}} % mtpr -> mechinetalk prefix
+\newcommand{\rtpr}[1]{{\rt #1}} % rtpr -> radiotalk prefix
+\newcommand{\pypr}[1]{{\py #1}} % pypr -> py prefix
+\newcommand{\rcpr}[1]{\emph{#1}} % 回忆 mrpr -> recall prefix
+\newcommand{\thpr}[1]{\emph{#1}} % 心理活动 thpr -> thought prefix
+\newcommand{\stpr}[1]{{\itshape \CJKunderdot{#1}}} % 强调 st -> stress % 不使用粗体 使用加点
+\newcommand{\rspr}[1]{\emph{#1}} % 录音声音 rspr -> record sound
+\newcommand{\wrpr}[1]{{\itshape \kaishu #1}} % 书写 wr -> write 
 
 %----------------------------------------------------------------------------------------
 %	数学相关
@@ -100,61 +127,75 @@
 
 \hypersetup{breaklinks=true,
             pdfauthor={RandomQuantum},
-            pdftitle={Fallout Equestria: Pink Eyes 辐射小马国：粉色双眸}
+            pdftitle={Fallout Equestria: Pink Eyes 辐射小马国：粉色双眸},
+            pdfcreator={LaTeX with CTeX and hyperref}
+            pdfkeywords={FoE}
             }
 %----------------------------------------------------------------------------------------
 %	环境
 %----------------------------------------------------------------------------------------
 
-\newenvironment{intro}{\begin{flushleft}\slshape \kaishu}
-{\end{flushleft}\medskip}
+% 题记样式
+\newenvironment{intro}{\begin{center}\slshape \kaishu}
+{\end{center}\medskip}
 
+% \newenvironment{song}{\begin{flushright}\itshape \kaishu {\awesomefont  \quad}}{\end{flushright}}
+
+% 唱歌样式
 \newenvironment{song}{\begin{flushright}\itshape \kaishu}{\end{flushright}}
 
+% 音乐样式
+\newenvironment{music}{\begin{flushright}\itshape \kaishu {\awesomefont  }\hspace{\fill}}{\end{flushright}}
+
+% \newenvironment{song}{\begin{flushright}\itshape \kaishu \marginpar[]{ \awesomefont }}{\end{flushright}}
+
+% \newenvironment{song}{\marginpar[]{ \awesomefont }\begin{flushright}\itshape \kaishu}{\end{flushright}}
+
+
 \newcommand\daytimeplace[4]{
-  \begin{center}
-    \ttfamily
+  \begin{table}[H]
+    \centering \ttfamily
     第 #1 天
 
     大约时间：#2
 
     地点：#3
 
-    LOCATION: #4
-  \end{center}
+    \textsc{Loaction}: #4
+  \end{table}
 }
 
 \newcommand\unknowndaytimeplace{
-  \begin{center}
-    \ttfamily
+  \begin{table}[H]
+    \centering \ttfamily
     日期：NaN
 
     时间：NaN
     
     地点：NaN
-  \end{center}
+  \end{table}
 }
 
 \newcommand\englishdaytimeplace[3]{
-  \begin{center}
-    \ttfamily
-    Day #1
+  \begin{table}[H]
+    \centering \ttfamily
+    \textsc{Day} #1
 
-    TIME approximately #2
+    \textsc{Time} approximately #2
 
-    LOCATION: #3
-  \end{center}
+    \textsc{Loaction}: #3
+  \end{table}
 }
 
 \newcommand\englishunknowndaytimeplace{
-  \begin{center}
-    \ttfamily
-    DAY N.A.
-
-    TIME N.A.
-    
-    LOCATION N.A.
-  \end{center}
+  \begin{table}[H] % 钉死
+    \centering
+    \begin{tabular}{lr}
+      \texttt{\textsc{Day}} & \texttt{N.A.} \\
+      \texttt{\textsc{Time}} & \texttt{N.A.} \\
+      \texttt{\textsc{Loaction}} & \texttt{N.A.} \\
+    \end{tabular}    
+  \end{table}
 }
 
 \font\eightssi=cmssqi8
@@ -193,13 +234,13 @@
 \end{flushleft}
 
 \begin{itemize}
-\item Strength: #1
-\item Perception: #2
-\item Endurance: #3
-\item Charisma: #4
-\item Intelligence: #5
-\item Agility: #6
-\item Luck: #7
+\item{\makebox[2cm][l]{Strength:} #1}
+\item{\makebox[2cm][l]{Perception:} #2}
+\item{\makebox[2cm][l]{Endurance:} #3}
+\item{\makebox[2cm][l]{Charisma:} #4}
+\item{\makebox[2cm][l]{Intelligence:} #5}
+\item{\makebox[2cm][l]{Agility:} #6}
+\item{\makebox[2cm][l]{Luck:} #7}
 \end{itemize}
 }
 
@@ -217,6 +258,19 @@
 \newcommand{\horizonline}{
     \begin{center}\includegraphics[width=0.5\linewidth]{image_line.png}\end{center}
 }
+
+%----------------------------------------------------------------------------------------
+% 目录问题解决
+%----------------------------------------------------------------------------------------
+
+% 需要放在 hyperref 后面
+% 规定 chapter 的计数器的上级为 part，使得每个 part 后 chapter 清零
+% 暴力使用 setcounter{chapter}{0} 会使得 hyperref 错误
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+% via: [sectioning - How to reset chapter and section counter with \part - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/54383/how-to-reset-chapter-and-section-counter-with-part)
+
 
 
 

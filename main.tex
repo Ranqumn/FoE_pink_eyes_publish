@@ -1,4 +1,4 @@
-\documentclass[UTF8]{ctexbook}
+\documentclass[UTF8,zihao=5]{ctexbook}
 
 \input{struction.tex}
 
@@ -11,7 +11,7 @@
 
 \frontmatter % 前言开始
 
-\input{chaps/cover.tex}
+\input{chaps/title.tex}
 \input{chaps/copyright.tex}
 \input{chaps/introduction.tex}
 \input{chaps/preface.tex}
@@ -20,6 +20,7 @@
 \ctexset{
     contentsname = Contents \quad 目录
 }
+
 \tableofcontents
 
 \mainmatter % 正文开始
@@ -63,7 +64,6 @@ chapter/number = \chinese{chapter}
 }
 
 \part{中译版}
-\setcounter{chapter}{0}
 
 \input{chaps/chinese/chap01.tex}
 \input{chaps/chinese/chap02.tex}
@@ -90,11 +90,11 @@ chapter/number = \chinese{chapter}
 \backmatter % 后记开始
 
 \ctexset{
-part/name = ,
+part/name = \texorpdfstring{$\infty$}{},  % 增加符号这样就不用修正空格
 part/number =
 }
 
-\part{Afterword \quad 后记}
+\part[Afterword 后记]{Afterword \\ 后记}
 
 \input{chaps/english/afterword.tex}
 \input{chaps/chinese/afterword.tex}
