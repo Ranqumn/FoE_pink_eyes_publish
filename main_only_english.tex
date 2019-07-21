@@ -1,0 +1,87 @@
+\documentclass[10pt]{book}
+
+\usepackage[english]{babel}
+
+\input{struction_only_english.tex}
+
+\pagestyle{english} % 全篇使用 english 页眉样式
+
+
+\usepackage[b5paper,twoside, % B5 纸张 双面
+nomarginpar, % 暴力去除边注区域
+hcentering, % 左右等宽
+bindingoffset=7mm, % 装订线 7 mm
+top=3.5cm,
+textheight=\topskip + 41\baselineskip % 42 行英文
+]{geometry}
+
+\title{Fallout Equestria \bigskip \\ {\Large Pink Eyes}}
+\author{Mimezinga}
+\date{}
+
+\begin{document}
+
+\frontmatter % 前言开始
+
+% \layout % 版面查看
+
+\input{chaps/title.tex}
+\input{chaps/only_english_version/copyright.tex}
+\input{chaps/only_english_version/introduction.tex}
+\input{chaps/only_english_version/preface.tex}
+
+\tableofcontents
+
+\mainmatter
+
+\input{chaps/english/chap01.tex}
+\input{chaps/english/chap02.tex}
+\input{chaps/english/chap03.tex}
+\input{chaps/english/chap04.tex}
+\input{chaps/english/chap05.tex}
+\input{chaps/english/chap06.tex}
+\input{chaps/english/chap07.tex}
+\input{chaps/english/chap08.tex}
+\input{chaps/english/chap09.tex}
+\input{chaps/english/chap10.tex}
+\input{chaps/english/chap11.tex}
+\input{chaps/english/chap12.tex}
+\input{chaps/english/chap13.tex}
+\input{chaps/english/chap14.tex}
+\input{chaps/english/chap15.tex}
+\input{chaps/english/chap16.tex}
+\input{chaps/english/chap17.tex}
+\input{chaps/english/chap18.tex}
+\input{chaps/english/chap19.tex}
+\input{chaps/english/chap20.tex}
+
+
+\backmatter % 后记开始
+
+\fancyhf{} % 清空
+
+\fancyhead[LE,RO]{\thepage}
+
+\fancyhead[LO]{\sffamily \uppercase{Afterword}} % 奇数页  \leftmark = 章节名称
+\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
+
+\input{chaps/english/afterword.tex}
+
+
+\fancyhf{} % 清空
+
+\fancyhead[LE,RO]{\thepage}
+
+\fancyhead[LO]{\sffamily \uppercase{Acknowledgements}} % 奇数页  \leftmark = 章节名称
+\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
+
+\input{chaps/only_english_version/acknowledgement.tex}
+
+
+
+
+\end{document}
+
+
+
+

@@ -28,14 +28,6 @@
 
 \usepackage{fancyhdr}
 
-\fancypagestyle{chinese}{%
-\fancyhf{} % 清空
-
-\fancyhead[LE,RO]{\thepage}
-
-\fancyhead[LO]{\notosans {\leftmark}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\notosans {辐射小马国：粉色双眸}} % 偶数页
-}
 
 \fancypagestyle{english}{%
 \fancyhf{} % 清空
@@ -43,42 +35,8 @@
 \fancyhead[LE,RO]{\thepage}
 
 \fancyhead[LO]{\sffamily {\leftmark}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\sffamily {Fallout Equestria: Pink Eyes}} % 偶数页
+\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
 }
-
-
-% 重新制作适应 B5 的版心 具体在 main 中的开头
-% 
-% 资料：
-% - [Type is Beautiful    » 从「行长为字号的整数倍」说起](https://thetype.com/2017/07/12513/)
-% - [中文排版时，每行文字最优的个数是多少？ - 知乎](https://www.zhihu.com/question/19621078)
-% - [ctexart页面宽度不到1/2 · Issue #386 · CTeX-org/ctex-kit · GitHub](https://github.com/CTeX-org/ctex-kit/issues/386)
-
-% \hanlength 汉字边长
-\newlength{\hanlength}
-\setlength{\hanlength}{10.5bp} % 五号字 10.5 bp
-
-\usepackage{zhlineskip} % 正文行高修正
-
-% 设置西文段落行距
-% 参考：
-% - [zhlineskip: 增加范例，单独设置西文段落的行距 · Issue #425 · CTeX-org/ctex-kit · GitHub](https://github.com/CTeX-org/ctex-kit/issues/425)
-% - zhlineskip 宏包手册
-
-\newenvironment{englishpar}  % 新建「英文段落」环境
-{\addvspace\medskipamount}  % 段前间距，上文段落需结束
-{\par\addvspace\medskipamount} % 段后间距
-
-\newenvironment{englishlyric}{}{}  % 新建「英文歌词」环境
-
-\newenvironment{english}{}{} % 新建「英文」环境
-
-% zhlineskip 宏包命令
-%\SetTextEnvironmentSinglespace{1.5} % 根据需要修改此数，默认值是 1，适合西文「单倍」行距
-
-\RestoreTextEnvironmentLeading{englishpar}
-\RestoreTextEnvironmentLeading{englishlyric}
-\RestoreTextEnvironmentLeading{english}
 
 
 % \usepackage{scrextend} 
@@ -92,20 +50,16 @@
 %	Input and Fonts
 %----------------------------------------------------------------------------------------
 
+\usepackage{ulem} % 划线
+
 % 使用 XeLaTeX 
 \usepackage{xltxtra,xunicode}
 
 \usepackage{textcomp} % 扩展特殊字符
 
-% \usepackage[htt]{hyphenat} % 等距字体 允许词可从中间断行 NOTE: 不需要了，使用加载字体解决
 
 \defaultfontfeatures{Ligatures=TeX} % fontspec 使用 TeX 的语法打特殊字符
 
-% 使用 Noto CJK
-
-\newCJKfontfamily[notoserifcjksc]\notoserif{Noto Serif CJK SC}
-\newCJKfontfamily[notosanscjksc]\notosans{Noto Sans CJK SC}
-\newCJKfontfamily[sarasagothicsc]\sarasagothic{Sarasa Gothic SC}
 
 
 \newfontfamily\freesans{FreeSans}
@@ -115,32 +69,29 @@
 
 \newfontfamily\awesomefont{Font Awesome 5 Free Solid}
 
-\setCJKmainfont{Noto Serif CJK SC}
 
-% 因为有些字 Fandol 没有 所以使用 Noto Serif
-% 这是一个不优雅的处理，先这样
 
 %----------------------------------------------------------------------------------------
 % 标记的样式设定
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\emph}[1]{{\itshape \kaishu #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
+\renewcommand{\emph}[1]{{\itshape #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
 
 % \newcommand{\mt}{\lmmono \fangsong} % mt -> mechinetalk NOTE: 使用 \lmmono 使得断词正确
-\newcommand{\mt}{\raintree \fangsong} % mt -> mechinetalk NOTE: 另外一种样式
+\newcommand{\mt}{\raintree } % mt -> mechinetalk NOTE: 另外一种样式
 % \newcommand{\mt}{\wsarasamono \sarasamono} % mt -> mechinetalk NOTE: 另外一种样式
 
-\newcommand{\rt}{\sffamily \notosans} % rt -> radiotalk
-\newcommand{\py}{\freesans \sarasagothic} % py -> 怕音
+\newcommand{\rt}{\sffamily } % rt -> radiotalk
+\newcommand{\py}{\freesans } % py -> 怕音
 
 \newcommand{\mtpr}[1]{{\mt #1}} % mtpr -> mechinetalk prefix
 \newcommand{\rtpr}[1]{{\rt #1}} % rtpr -> radiotalk prefix
 \newcommand{\pypr}[1]{{\py #1}} % pypr -> py prefix
 \newcommand{\rcpr}[1]{\emph{#1}} % 回忆 mrpr -> recall prefix
 \newcommand{\thpr}[1]{\emph{#1}} % 心理活动 thpr -> thought prefix
-\newcommand{\stpr}[1]{{\itshape \CJKunderdot{#1}}} % 强调 st -> stress % 不使用粗体 使用加点
+\newcommand{\stpr}[1]{{\itshape #1}} % 强调 st -> stress % 不使用粗体 使用加点
 \newcommand{\rspr}[1]{\emph{#1}} % 录音声音 rspr -> record sound
-\newcommand{\wrpr}[1]{{\itshape \kaishu #1}} % 书写 wr -> write 
+\newcommand{\wrpr}[1]{{\itshape #1}} % 书写 wr -> write 
 
 %----------------------------------------------------------------------------------------
 %	数学相关
@@ -178,7 +129,7 @@
 
 \hypersetup{breaklinks=true,
             pdfauthor={RandomQuantum},
-            pdftitle={Fallout Equestria: Pink Eyes 辐射小马国：粉色双眸},
+            pdftitle={Fallout Equestria: Pink Eyes},
             pdfcreator={LaTeX with CTeX and hyperref}
             pdfkeywords={FoE}
             }
@@ -187,45 +138,21 @@
 %----------------------------------------------------------------------------------------
 
 % 题记样式
-\newenvironment{intro}{\begin{center}\slshape \kaishu}
+\newenvironment{intro}{\begin{center}\slshape}
 {\end{center}\medskip}
 
 % \newenvironment{song}{\begin{flushright}\itshape \kaishu {\awesomefont  \quad}}{\end{flushright}}
 
 % 唱歌样式
-\newenvironment{song}{\begin{flushright}\itshape \kaishu}{\end{flushright}}
+\newenvironment{song}{\begin{flushright}\itshape}{\end{flushright}}
 
 % 音乐样式
-\newenvironment{music}{\begin{flushright}\itshape \kaishu {\awesomefont  }\hspace{\fill}}{\end{flushright}}
+\newenvironment{music}{\begin{flushright}\itshape {\awesomefont  }\hspace{\fill}}{\end{flushright}}
 
 % \newenvironment{song}{\begin{flushright}\itshape \kaishu \marginpar[]{ \awesomefont }}{\end{flushright}}
 
 % \newenvironment{song}{\marginpar[]{ \awesomefont }\begin{flushright}\itshape \kaishu}{\end{flushright}}
 
-
-\newcommand\daytimeplace[4]{
-  \begin{table}[H]
-    \centering \ttfamily
-    第 #1 天
-
-    大约时间：#2
-
-    地点：#3
-
-    \textsc{Loaction}: #4
-  \end{table}
-}
-
-\newcommand\unknowndaytimeplace{
-  \begin{table}[H]
-    \centering \ttfamily
-    日期：N/A
-
-    时间：N/A
-    
-    地点：N/A
-  \end{table}
-}
 
 \newcommand\englishdaytimeplace[3]{
   \begin{table}[H]
@@ -254,30 +181,12 @@
 \newenvironment{motto}{
 ~\vfill
 \begin{flushright}
-  \eightssi \fangsong
+  \eightssi
 }{\end{flushright}}
 
-\newenvironment{note}{
-\paragraph{蹄注}}{\bigskip}
 
 \newenvironment{engnote}{
 \paragraph{Hoovenote}}{\bigskip}
-
-\newcommand\printstatus[7]{
-\begin{flushleft}
-\textbf{帕比的属性}
-\end{flushleft}
-
-\begin{itemize}
-\item 力量：#1
-\item 感知：#2
-\item 耐力：#3
-\item 魅力：#4
-\item 智力：#5
-\item 敏捷：#6
-\item 幸运：#7
-\end{itemize}
-}
 
 \newcommand\engprintstatus[7]{
 \begin{flushleft}
@@ -313,13 +222,11 @@
 % 第三种样式 via: fancyhdr 宏包手册
 \usepackage{fourier-orns}
 \newcommand{\horizonline}{%
-\begin{englishpar}
   \begin{center}
     \rule{0.2\linewidth}{\linethickness}
     \raisebox{-2.1pt}{\hspace{1em}\decofourleft\decotwo\decofourright\hspace{1em}}% 然而并不对称
     \rule{0.2\linewidth}{\linethickness}
   \end{center}
-\end{englishpar}
 }
 
 %----------------------------------------------------------------------------------------

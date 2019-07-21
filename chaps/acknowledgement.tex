@@ -1,5 +1,11 @@
 \chapter{Acknowledgements}
 
+% NOTE: pagestyle 放在 english 环境外面，否则无作用
+
+\pagestyle{english}
+
+\begin{english}
+
 \begin{center}
     This fanfiction is based on \emph{Fallout: Equestria} by Kkat.    
 \end{center}
@@ -47,7 +53,14 @@
     \item This Project on GitHub: \url{https://github.com/Ranqumn/FoE_pink_eyes_publish}
 \end{itemize}
 
+
+\end{english}
+
+% --------------------
+
 \chapter{致谢}
+
+\pagestyle{chinese}
 
 \section*{译者}
 
@@ -97,24 +110,35 @@
 
 \clearpage
 
+% ---------
+
+% 手动调整
+
+\fancyhf{} % 清空
+
+\fancyhead[LE,RO]{\thepage}
+
+\fancyhead[LO]{\sffamily {Acknowledgements}} % 奇数页  \leftmark = 章节名称
+\fancyhead[RE]{\sffamily {Fallout Equestria: Pink Eyes}} % 偶数页
+
+
 ~\vfill
 
 \begin{center}
-\sout{Press any key to skip credits}
 
-(This function has not been provided yet)
-
-\smallskip
+\begin{englishpar}
+    \sout{Press any key to skip credits}
+    
+    (This function has not been provided yet)
+\end{englishpar}
 
 \CJKsout{按任意键跳过制作人员列表}
 
 （暂不支持该功能）
 
-\medskip
-
-Thank you for playing \emph{Fallout Equestria: Pink Eyes}
-
-\smallskip
+\begin{englishpar}
+    Thank you for playing \emph{Fallout Equestria: Pink Eyes}
+\end{englishpar}
 
 感谢您玩赏
 \end{center}
