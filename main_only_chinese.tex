@@ -2,6 +2,25 @@
 
 \input{struction.tex}
 
+\pagestyle{chinese} % 全篇使用 chinese 页眉样式
+
+% 版面设计
+
+% 需要留出装订线距离
+
+\raggedbottom % 向顶端对齐
+\setlength{\topskip}{0.88\ccwd} % 版心上沿到第一行基线 Adobe 系
+
+\usepackage[b5paper,twoside, % B5 纸张 双面
+hcentering, % 左右等宽
+top=3.5cm, % 天高随缘
+bindingoffset=7mm, % 装订线 7 mm
+nomarginpar, % 暴力去除边注区域
+textwidth=33\ccwd, % 每行 33 个字
+textheight=47.5\ccwd % 一页 32 行
+]{geometry}
+
+
 \title{Fallout Equestria \\ 辐射小马国 \bigskip \\ {\Large Pink Eyes \\ 粉色双眸}}
 \author{Mimezinga \and MadCatMKII}
 \date{}

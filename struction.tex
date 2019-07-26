@@ -33,8 +33,8 @@
 
 \fancyhead[LE,RO]{\thepage}
 
-\fancyhead[LO]{\notosans {\leftmark}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\notosans {辐射小马国：粉色双眸}} % 偶数页
+\fancyhead[LO]{\sffamily {\leftmark}} % 奇数页  \leftmark = 章节名称
+\fancyhead[RE]{\sffamily {辐射小马国：粉色双眸}} % 偶数页
 }
 
 \fancypagestyle{english}{%
@@ -43,7 +43,7 @@
 \fancyhead[LE,RO]{\thepage}
 
 \fancyhead[LO]{\sffamily {\leftmark}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\sffamily {Fallout Equestria: Pink Eyes}} % 偶数页
+\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
 }
 
 
@@ -54,11 +54,8 @@
 % - [中文排版时，每行文字最优的个数是多少？ - 知乎](https://www.zhihu.com/question/19621078)
 % - [ctexart页面宽度不到1/2 · Issue #386 · CTeX-org/ctex-kit · GitHub](https://github.com/CTeX-org/ctex-kit/issues/386)
 
-% \hanlength 汉字边长
-\newlength{\hanlength}
-\setlength{\hanlength}{10.5bp} % 五号字 10.5 bp
 
-\usepackage{zhlineskip} % 正文行高修正
+\usepackage[bodytextleadingratio=1.5]{zhlineskip} % 正文行高修正
 
 % 设置西文段落行距
 % 参考：
@@ -72,6 +69,7 @@
 \newenvironment{englishlyric}{}{}  % 新建「英文歌词」环境
 
 \newenvironment{english}{}{} % 新建「英文」环境
+
 
 % zhlineskip 宏包命令
 %\SetTextEnvironmentSinglespace{1.5} % 根据需要修改此数，默认值是 1，适合西文「单倍」行距
@@ -97,8 +95,6 @@
 
 \usepackage{textcomp} % 扩展特殊字符
 
-% \usepackage[htt]{hyphenat} % 等距字体 允许词可从中间断行 NOTE: 不需要了，使用加载字体解决
-
 \defaultfontfeatures{Ligatures=TeX} % fontspec 使用 TeX 的语法打特殊字符
 
 % 使用 Noto CJK
@@ -115,22 +111,51 @@
 
 \newfontfamily\awesomefont{Font Awesome 5 Free Solid}
 
-\setCJKmainfont{Noto Serif CJK SC}
+\setCJKmainfont{Noto Serif CJK SC}[
+  BoldFont=Noto Serif CJK SC Bold,
+  ItalicFont=FandolKai-Regular
+]
 
-% 因为有些字 Fandol 没有 所以使用 Noto Serif
-% 这是一个不优雅的处理，先这样
+\setCJKsansfont{Noto Sans CJK SC}
+
+% 暴力修正 FandolKai Fandol-FangSong 的基线
+% via: https://github.com/clerkma/ptex-ng-dist/issues/5
+
+\makeatletter
+\newcommand*\original@CJKsymbol{}
+\newcommand*\original@CJKpunctsymbol{}
+\let\original@CJKsymbol\CJKsymbol
+\let\original@CJKpunctsymbol\CJKpunctsymbol
+\newcommand*\raise@Fandol@CJK[1]{\raise0.08\ccwd\hbox{#1}}
+\appto\itshape{%
+  \let\CJKsymbol\raise@Fandol@CJK
+  \let\CJKpunctsymbol\raise@Fandol@CJK
+}
+\appto\kaishu{%
+  \let\CJKsymbol\raise@Fandol@CJK
+  \let\CJKpunctsymbol\raise@Fandol@CJK
+}
+\appto\fangsong{%
+  \let\CJKsymbol\raise@Fandol@CJK
+  \let\CJKpunctsymbol\raise@Fandol@CJK
+}
+\appto\upshape{%
+  \let\CJKsymbol\original@CJKsymbol
+  \let\CJKpunctsymbol\original@CJKpunctsymbol
+}
+\makeatother
 
 %----------------------------------------------------------------------------------------
 % 标记的样式设定
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\emph}[1]{{\itshape \kaishu #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
+\renewcommand{\emph}[1]{{\itshape #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
 
 % \newcommand{\mt}{\lmmono \fangsong} % mt -> mechinetalk NOTE: 使用 \lmmono 使得断词正确
 \newcommand{\mt}{\raintree \fangsong} % mt -> mechinetalk NOTE: 另外一种样式
 % \newcommand{\mt}{\wsarasamono \sarasamono} % mt -> mechinetalk NOTE: 另外一种样式
 
-\newcommand{\rt}{\sffamily \notosans} % rt -> radiotalk
+\newcommand{\rt}{\sffamily} % rt -> radiotalk
 \newcommand{\py}{\freesans \sarasagothic} % py -> 怕音
 
 \newcommand{\mtpr}[1]{{\mt #1}} % mtpr -> mechinetalk prefix
@@ -140,7 +165,7 @@
 \newcommand{\thpr}[1]{\emph{#1}} % 心理活动 thpr -> thought prefix
 \newcommand{\stpr}[1]{{\itshape \CJKunderdot{#1}}} % 强调 st -> stress % 不使用粗体 使用加点
 \newcommand{\rspr}[1]{\emph{#1}} % 录音声音 rspr -> record sound
-\newcommand{\wrpr}[1]{{\itshape \kaishu #1}} % 书写 wr -> write 
+\newcommand{\wrpr}[1]{{\itshape #1}} % 书写 wr -> write 
 
 %----------------------------------------------------------------------------------------
 %	数学相关

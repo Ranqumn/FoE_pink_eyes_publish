@@ -1,10 +1,161 @@
-\documentclass[UTF8,zihao=5]{ctexbook}
+\documentclass[UTF8,scheme=plain]{ctexbook}
+
+% 标题居中显示
+
+\ctexset{
+chapter/format += \centering,
+section/format += \centering
+}
 
 \input{struction.tex}
+\usepackage{indentfirst} % 首段的首行缩进
 
 \title{Fallout Equestria \\ 辐射小马国 \bigskip \\ {\Large Pink Eyes \\ 粉色双眸}}
 \author{Mimezinga \and MadCatMKII}
 \date{}
+
+% 版面设计
+
+% \usepackage{showframe}
+% \usepackage{layouts}
+
+% 没有装订线距离
+
+% NOTE:
+
+% \ccwd 汉字宽度
+
+% % 中文版心
+
+% \setlength{\topskip}{9.24bp}
+% \setlength{\parskip}{0pt} % 暴力去除弹性距离
+
+% \usepackage[b5paper,twoside, % B5 纸张 双面
+% nomarginpar, % 暴力去除边注区域
+% hcentering, % 左右等宽
+% top=3.5cm,
+% textwidth=33\ccwd, % 每行 33 个字
+% textheight=46.5\ccwd + \topskip + 0.12\ccwd % 一页 32 行，31*1.5 = 46.5
+% ]{geometry}
+
+% % 英文版心
+
+% \setlength{\topskip}{10pt}
+% \setlength{\parskip}{0pt plus 1pt} % 弹性距离
+
+% \usepackage[b5paper,twoside, % B5 纸张 双面
+% nomarginpar, % 暴力去除边注区域
+% hcentering, % 左右等宽
+% top=3.5cm,
+% textwidth=33\ccwd, % 每行 33 个字
+% textheight=46.5\ccwd + \topskip % 适应 中文
+% ]{geometry}
+
+
+% 10pt 文档类 魔改
+
+% via: https://tex.stackexchange.com/questions/30655/specifying-percent-of-font-size-as-normalsize
+
+% \renewcommand\normalsize{%
+%    \@setfontsize\normalsize{10pt}{12pt}%
+%    \abovedisplayskip 10pt \@plus 2pt \@minus 5pt
+% }
+% \renewcommand\small{%
+%    \@setfontsize\small{9pt}{10.8pt}%
+% }
+% \renewcommand\footnotesize{\@setfontsize\footnotesize{8pt}{9.6pt}}
+% \renewcommand\scriptsize{\@setfontsize\scriptsize{7pt}{8.4pt}}
+% \renewcommand\tiny{\@setfontsize\tiny{5pt}{6pt}}
+% \renewcommand\large{\@setfontsize\large{12pt}{14.4pt}}
+% \renewcommand\Large{\@setfontsize\Large{14.4pt}{17.28pt}}
+% \renewcommand\LARGE{\@setfontsize\LARGE{17.28pt}{20.738pt}}
+% \renewcommand\huge{\@setfontsize\huge{20.74pt}{24.8832pt}}
+% \renewcommand\Huge{\@setfontsize\Huge{24.88pt}{29.85984pt}}
+
+
+% 实现
+
+% NOTE: [macros - Why doesn't \makeatletter work inside \newcommand? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/201348/why-doesnt-makeatletter-work-inside-newcommand)
+% NOTE: 需要 1.2 倍
+
+\makeatletter
+\newcommand{\parenglishset}{%
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize{10pt}{12pt}%
+}
+\renewcommand\small{%
+   \@setfontsize\small{9pt}{10.8pt}%
+}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{8pt}{9.6pt}}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{7pt}{8.4pt}}
+\renewcommand\tiny{\@setfontsize\tiny{5pt}{6pt}}
+\renewcommand\large{\@setfontsize\large{12pt}{16pt}}
+\renewcommand\Large{\@setfontsize\Large{14.4pt}{20pt}}
+\renewcommand\LARGE{\@setfontsize\LARGE{17.28pt}{26pt}}
+\renewcommand\huge{\@setfontsize\huge{20.74pt}{30pt}}
+\renewcommand\Huge{\@setfontsize\Huge{24.88pt}{36pt}}
+
+\normalsize % 激活
+
+\setlength{\topskip}{10pt}
+\flushbottom % 分散对齐
+\setlength{\parindent}{15pt} % 首行距离
+\setlength{\baselineskip}{12pt}
+}
+\makeatother
+
+\makeatletter
+\newcommand{\parchineseset}{%
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize{10.5bp}{12.6bp}%
+}
+\renewcommand\small{%
+   \@setfontsize\small{9bp}{10.8bp}%
+}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{7.5bp}{9bp}}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{6.5bp}{7.8bp}}
+\renewcommand\tiny{\@setfontsize\tiny{5.5bp}{6.6bp}}
+\renewcommand\large{\@setfontsize\large{12bp}{16pt}}
+\renewcommand\Large{\@setfontsize\Large{15bp}{20pt}}
+\renewcommand\LARGE{\@setfontsize\LARGE{18bp}{26pt}}
+\renewcommand\huge{\@setfontsize\huge{22bp}{30pt}}
+\renewcommand\Huge{\@setfontsize\Huge{26bp}{36pt}}
+
+\normalsize % 激活
+
+\setlength{\topskip}{0.88\ccwd}
+\raggedbottom % 向顶端对齐
+\setlength{\parindent}{2\ccwd} % 首行距离
+\setlength{\baselineskip}{1.5\ccwd}%
+}
+\makeatother
+
+\newcommand{\layoutenglish}{
+
+\parenglishset
+
+\loadgeometry{layoutenglish}
+}
+
+
+\newcommand{\layoutchinese}{
+
+\parchineseset
+
+\restoregeometry
+}
+
+% 导言区设置中文版心
+
+\parchineseset
+
+\usepackage[b5paper,twoside, % B5 纸张 双面
+nomarginpar, % 暴力去除边注区域
+hcentering, % 左右等宽
+top=3.5cm,
+textwidth=33\ccwd, % 每行 33 个字
+textheight=47.5\ccwd % 一页 32 行，32*1 + 31*0.5 = 47.5
+]{geometry}
 
 
 \begin{document}
@@ -13,17 +164,38 @@
 
 \input{chaps/title.tex}
 \input{chaps/copyright.tex}
+
+% 插入英文版心
+
+\parenglishset
+
+\newgeometry{twoside, % B5 纸张 双面
+nomarginpar, % 暴力去除边注区域
+hcentering, % 左右等宽
+top=3.5cm,
+textwidth=33\ccwd, % 每行 33 个字
+textheight=504pt % 42 行英文
+% textheight=42\baselineskip % 42 行英文
+}
+
+\savegeometry{layoutenglish}
+
+% 
+
 \input{chaps/introduction.tex}
 \input{chaps/preface.tex}
 
+\layoutchinese
 
 \ctexset{
-    contentsname = Contents \quad 目录
+contentsname = Contents \quad 目录
 }
 
 \tableofcontents
 
 \mainmatter % 正文开始
+
+\layoutenglish
 
 \ctexset{
 part/name = {Part~,},
@@ -32,28 +204,44 @@ chapter/name = {Chapter~,},
 chapter/number = \thechapter
 }
 
+\pagestyle{english}
+
+\begin{english}
+
+
 \part{English Version}
 
-\input{chaps/english/chap01.tex}
-\input{chaps/english/chap02.tex}
-\input{chaps/english/chap03.tex}
-\input{chaps/english/chap04.tex}
-\input{chaps/english/chap05.tex}
-\input{chaps/english/chap06.tex}
-\input{chaps/english/chap07.tex}
-\input{chaps/english/chap08.tex}
-\input{chaps/english/chap09.tex}
-\input{chaps/english/chap10.tex}
-\input{chaps/english/chap11.tex}
-\input{chaps/english/chap12.tex}
-\input{chaps/english/chap13.tex}
-\input{chaps/english/chap14.tex}
-\input{chaps/english/chap15.tex}
-\input{chaps/english/chap16.tex}
-\input{chaps/english/chap17.tex}
-\input{chaps/english/chap18.tex}
-\input{chaps/english/chap19.tex}
-\input{chaps/english/chap20.tex}
+\input{chaps/two_version/english/chap01.tex}
+\input{chaps/two_version/english/chap02.tex}
+\input{chaps/two_version/english/chap03.tex}
+\input{chaps/two_version/english/chap04.tex}
+\input{chaps/two_version/english/chap05.tex}
+\input{chaps/two_version/english/chap06.tex}
+\input{chaps/two_version/english/chap07.tex}
+\input{chaps/two_version/english/chap08.tex}
+\input{chaps/two_version/english/chap09.tex}
+\input{chaps/two_version/english/chap10.tex}
+\input{chaps/two_version/english/chap11.tex}
+\input{chaps/two_version/english/chap12.tex}
+\input{chaps/two_version/english/chap13.tex}
+\input{chaps/two_version/english/chap14.tex}
+\input{chaps/two_version/english/chap15.tex}
+\input{chaps/two_version/english/chap16.tex}
+\input{chaps/two_version/english/chap17.tex}
+\input{chaps/two_version/english/chap18.tex}
+\input{chaps/two_version/english/chap19.tex}
+\input{chaps/two_version/english/chap20.tex}
+
+
+\end{english}
+
+\layoutchinese
+
+\ctexset{
+chapter/aftername = \quad,
+chapter/titleformat = \huge,
+chapter/format = \huge\bfseries\centering
+}
 
 
 \ctexset{
@@ -63,28 +251,30 @@ chapter/name = {第,章},
 chapter/number = \chinese{chapter}
 }
 
+\pagestyle{chinese}
+
 \part{中译版}
 
-\input{chaps/chinese/chap01.tex}
-\input{chaps/chinese/chap02.tex}
-\input{chaps/chinese/chap03.tex}
-\input{chaps/chinese/chap04.tex}
-\input{chaps/chinese/chap05.tex}
-\input{chaps/chinese/chap06.tex}
-\input{chaps/chinese/chap07.tex}
-\input{chaps/chinese/chap08.tex}
-\input{chaps/chinese/chap09.tex}
-\input{chaps/chinese/chap10.tex}
-\input{chaps/chinese/chap11.tex}
-\input{chaps/chinese/chap12.tex}
-\input{chaps/chinese/chap13.tex}
-\input{chaps/chinese/chap14.tex}
-\input{chaps/chinese/chap15.tex}
-\input{chaps/chinese/chap16.tex}
-\input{chaps/chinese/chap17.tex}
-\input{chaps/chinese/chap18.tex}
-\input{chaps/chinese/chap19.tex}
-\input{chaps/chinese/chap20.tex}
+\input{chaps/two_version/chinese/chap01.tex}
+\input{chaps/two_version/chinese/chap02.tex}
+\input{chaps/two_version/chinese/chap03.tex}
+\input{chaps/two_version/chinese/chap04.tex}
+\input{chaps/two_version/chinese/chap05.tex}
+\input{chaps/two_version/chinese/chap06.tex}
+\input{chaps/two_version/chinese/chap07.tex}
+\input{chaps/two_version/chinese/chap08.tex}
+\input{chaps/two_version/chinese/chap09.tex}
+\input{chaps/two_version/chinese/chap10.tex}
+\input{chaps/two_version/chinese/chap11.tex}
+\input{chaps/two_version/chinese/chap12.tex}
+\input{chaps/two_version/chinese/chap13.tex}
+\input{chaps/two_version/chinese/chap14.tex}
+\input{chaps/two_version/chinese/chap15.tex}
+\input{chaps/two_version/chinese/chap16.tex}
+\input{chaps/two_version/chinese/chap17.tex}
+\input{chaps/two_version/chinese/chap18.tex}
+\input{chaps/two_version/chinese/chap19.tex}
+\input{chaps/two_version/chinese/chap20.tex}
 
 
 \backmatter % 后记开始
@@ -96,8 +286,16 @@ part/number =
 
 \part[Afterword 后记]{Afterword \\ 后记}
 
-\input{chaps/english/afterword.tex}
-\input{chaps/chinese/afterword.tex}
+\layoutenglish
+\pagestyle{english}
+\begin{english}
+\input{chaps/two_version/english/afterword.tex}
+\end{english}
+
+\layoutchinese
+\pagestyle{chinese}
+\input{chaps/two_version/chinese/afterword.tex}
+
 \input{chaps/acknowledgement.tex}
 
 
