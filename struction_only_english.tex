@@ -62,9 +62,6 @@
 
 
 
-\newfontfamily\freesans{FreeSans}
-\newfontfamily\lmmono{lmmono10-regular.otf} % Latin Modern Mono 默认的等距字体 NOTE: 该字体不区分前后引号
-
 \newfontfamily\raintree{Raintree} % 英文发布版带字体 注意版权问题
 
 \newfontfamily\awesomefont{Font Awesome 5 Free Solid}
@@ -75,14 +72,10 @@
 % 标记的样式设定
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\emph}[1]{{\itshape #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
-
-% \newcommand{\mt}{\lmmono \fangsong} % mt -> mechinetalk NOTE: 使用 \lmmono 使得断词正确
 \newcommand{\mt}{\raintree } % mt -> mechinetalk NOTE: 另外一种样式
-% \newcommand{\mt}{\wsarasamono \sarasamono} % mt -> mechinetalk NOTE: 另外一种样式
 
 \newcommand{\rt}{\sffamily } % rt -> radiotalk
-\newcommand{\py}{\freesans } % py -> 怕音
+\newcommand{\py}{\sffamily } % py -> 怕音
 
 \newcommand{\mtpr}[1]{{\mt #1}} % mtpr -> mechinetalk prefix
 \newcommand{\rtpr}[1]{{\rt #1}} % rtpr -> radiotalk prefix

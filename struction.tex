@@ -68,15 +68,12 @@
 
 \newenvironment{englishlyric}{}{}  % 新建「英文歌词」环境
 
-\newenvironment{english}{}{} % 新建「英文」环境
-
 
 % zhlineskip 宏包命令
-%\SetTextEnvironmentSinglespace{1.5} % 根据需要修改此数，默认值是 1，适合西文「单倍」行距
+% \SetTextEnvironmentSinglespace{1.1} % 根据需要修改此数，默认值是 1，适合西文「单倍」行距
 
 \RestoreTextEnvironmentLeading{englishpar}
 \RestoreTextEnvironmentLeading{englishlyric}
-\RestoreTextEnvironmentLeading{english}
 
 
 % \usepackage{scrextend} 
@@ -99,24 +96,42 @@
 
 % 使用 Noto CJK
 
-\newCJKfontfamily[notoserifcjksc]\notoserif{Noto Serif CJK SC}
-\newCJKfontfamily[notosanscjksc]\notosans{Noto Sans CJK SC}
-\newCJKfontfamily[sarasagothicsc]\sarasagothic{Sarasa Gothic SC}
 
+\newfontfamily\raintree{Raintree}[Scale=1.1] % 英文发布版带字体 注意版权问题
 
-\newfontfamily\freesans{FreeSans}
-\newfontfamily\lmmono{lmmono10-regular.otf} % Latin Modern Mono 默认的等距字体 NOTE: 该字体不区分前后引号
+\newfontfamily\awesomefont{Font Awesome 5 Free Solid}[Scale=1.1]
 
-\newfontfamily\raintree{Raintree} % 英文发布版带字体 注意版权问题
+\setmainfont{lmroman10-regular.otf}[
+  ItalicFont=lmroman10-italic.otf,
+  BoldFont=lmroman10-bold.otf,
+  BoldItalicFont=lmroman10-italic.otf,
+  SmallCapsFont=lmromancaps10-regular.otf,
+  SlantedFont=lmromanslant10-regular.otf,
+  Scale=1.1
+]
 
-\newfontfamily\awesomefont{Font Awesome 5 Free Solid}
+\setsansfont{lmsans10-regular.otf}[
+  ItalicFont=lmsans10-oblique.otf,
+  BoldFont=lmsans10-bold.otf,
+  BoldItalicFont=lmsans10-boldoblique.otf,
+  Scale=1.1
+]
+
+\setmonofont{lmmono10-regular.otf}[
+  ItalicFont=lmmono10-italic.otf,
+  SmallCapsFont=lmmonocaps10-regular.otf,
+  Scale=1.1
+]
 
 \setCJKmainfont{Noto Serif CJK SC}[
   BoldFont=Noto Serif CJK SC Bold,
   ItalicFont=FandolKai-Regular
 ]
 
-\setCJKsansfont{Noto Sans CJK SC}
+\setCJKsansfont{Noto Sans CJK SC DemiLight}[
+  BoldFont=Noto Sans CJK SC Medium
+]
+
 
 % 暴力修正 FandolKai Fandol-FangSong 的基线
 % via: https://github.com/clerkma/ptex-ng-dist/issues/5
@@ -149,14 +164,10 @@
 % 标记的样式设定
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\emph}[1]{{\itshape #1}} % emph 中文使用楷书 因为 Noto Serif 没有斜体
-
-% \newcommand{\mt}{\lmmono \fangsong} % mt -> mechinetalk NOTE: 使用 \lmmono 使得断词正确
 \newcommand{\mt}{\raintree \fangsong} % mt -> mechinetalk NOTE: 另外一种样式
-% \newcommand{\mt}{\wsarasamono \sarasamono} % mt -> mechinetalk NOTE: 另外一种样式
 
 \newcommand{\rt}{\sffamily} % rt -> radiotalk
-\newcommand{\py}{\freesans \sarasagothic} % py -> 怕音
+\newcommand{\py}{\sffamily} % py -> 怕音
 
 \newcommand{\mtpr}[1]{{\mt #1}} % mtpr -> mechinetalk prefix
 \newcommand{\rtpr}[1]{{\rt #1}} % rtpr -> radiotalk prefix
