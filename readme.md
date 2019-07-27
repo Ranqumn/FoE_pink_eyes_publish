@@ -60,8 +60,6 @@
 - 额外字体需安装
     - Noto Serif CJK SC
     - Noto Sans CJK SC
-    - Sarasa Gothic SC
-    - FreeSans
     - Font Awesome 5 Free
     - Raintree Regular
 
