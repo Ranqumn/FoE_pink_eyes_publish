@@ -65,6 +65,30 @@
     - Font Awesome 5 Free
     - Raintree Regular
 
+## 致谢
+
+特别感谢以下人员在合作时的帮助
+
+- 国内马圈
+    - ShadowDumb
+
+以及以下人员在专业排版处理中的帮助
+
+- Chinese TeX Society 与 CTeX Forum 的各位
+    - Ruixi Zhang       @RuixiZhang42
+    - Xiangdong Zeng    @stone-zeng
+    - Zeping Lee        @zepinglee
+    - @muzimuzhi
+    - ChenCheng Huang   @Liam0205
+
+## 排版处理的讨论
+
+可见
+
+- [中文版心设计的疑难与最佳实践？ | Issue #47](https://github.com/CTeX-org/forum/issues/47)
+- [从版心设计到实物装订的工作流程与一些疑问 - 个人非商业用途的一个实践 | Issue #49](https://github.com/CTeX-org/forum/issues/49)
+
+
 ## 文案编辑
 
 - 呯 -> 乒
