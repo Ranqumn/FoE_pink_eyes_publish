@@ -73,11 +73,14 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\mt}{\raintree } % mt -> mechinetalk NOTE: 另外一种样式
+\newcommand{\mten}{\raintree} % 重复
 
 \newcommand{\rt}{\sffamily } % rt -> radiotalk
 \newcommand{\py}{\sffamily } % py -> 怕音
 
 \newcommand{\mtpr}[1]{{\mt #1}} % mtpr -> mechinetalk prefix
+\newcommand{\mtenpr}[1]{{\mt #1}} % 重复
+
 \newcommand{\rtpr}[1]{{\rt #1}} % rtpr -> radiotalk prefix
 \newcommand{\pypr}[1]{{\py #1}} % pypr -> py prefix
 \newcommand{\rcpr}[1]{\emph{#1}} % 回忆 mrpr -> recall prefix
@@ -91,8 +94,11 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{siunitx}
+% \usepackage{siunitx}
 
+\newfontfamily\engfontapprox{FandolFang-Regular.otf}
+
+\newcommand{\engapprox}{{\engfontapprox ≈}}
 
 %----------------------------------------------------------------------------------------
 %	目录
@@ -217,7 +223,7 @@
 \newcommand{\horizonline}{%
   \begin{center}
     \rule{0.2\linewidth}{\linethickness}
-    \raisebox{-2.1pt}{\hspace{1em}\decofourleft\decotwo\decofourright\hspace{1em}}% 然而并不对称
+    \raisebox{-2.1pt}{\hspace{1em}\decofourleft\decotwo\decofourright\hspace{1em}}\,   % 然而并不对称 插入 \, 调正
     \rule{0.2\linewidth}{\linethickness}
   \end{center}
 }

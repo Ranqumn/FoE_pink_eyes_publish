@@ -1,6 +1,17 @@
 \documentclass[UTF8,zihao=5]{ctexbook}
 
-% 标题居中显示
+
+%----------------------------------------------------------------------------------------
+% 与 only_chinese 通用设置
+%----------------------------------------------------------------------------------------
+
+\input{struction.tex}
+
+%----------------------------------------------------------------------------------------
+% 西文标题样式还原
+%----------------------------------------------------------------------------------------
+
+% 参数 via: CTeX 宏集手册
 
 \ctexset{
 chapter/format = \centering,
@@ -11,20 +22,46 @@ chapter/aftername = \par\nobreak\vskip 20pt,
 chapter/titleformat = \Huge\bfseries
 }
 
-\input{struction.tex}
+%----------------------------------------------------------------------------------------
+% 与标题相关的一些标记
+%----------------------------------------------------------------------------------------
+
+% NOTE: 其实已经没有用了；title.tex 重写了样式
 
 \title{Fallout Equestria \\ 辐射小马国 \bigskip \\ {\Large Pink Eyes \\ 粉色双眸}}
 \author{Mimezinga \and MadCatMKII}
 \date{}
 
 
-\setlength{\topskip}{9.24bp} % 0.88\ccwd
+%----------------------------------------------------------------------------------------
+% 重新制作适应 B5 的版心
+%----------------------------------------------------------------------------------------
+% 
+% 资料：
+% - [Type is Beautiful    » 从「行长为字号的整数倍」说起](https://thetype.com/2017/07/12513/)
+% - [中文排版时，每行文字最优的个数是多少？ - 知乎](https://www.zhihu.com/question/19621078)
+% - [ctexart页面宽度不到1/2 · Issue #386 · CTeX-org/ctex-kit · GitHub](https://github.com/CTeX-org/ctex-kit/issues/386)
+
+
+% 版心设计辅助测试宏包
+
+% \usepackage{showframe}
+% \usepackage{layouts}
+% \usepackage{layout} % 查看版面设计
+
+% ------
+
+% NOTE: 不需要留出装订线距离
+
+% NOTE: \ccwd 汉字宽度
+
+\setlength{\topskip}{9.24bp} % 0.88\ccwd 思源系字体
 \raggedbottom % 向顶端对齐
 
 \usepackage[b5paper,twoside, % B5 纸张 双面
 nomarginpar, % 暴力去除边注区域
 hcentering, % 左右等宽
-top=3.5cm,
+top=3.5cm, % 天高随缘
 textwidth=346.5bp, % 每行 33 个字
 textheight=498.75bp % 一页 32 行，32*1 + 31*0.5 = 47.5
 ]{geometry}
@@ -35,21 +72,28 @@ textheight=498.75bp % 一页 32 行，32*1 + 31*0.5 = 47.5
 
 \input{chaps/title.tex}
 \input{chaps/copyright.tex}
-
-% 
-
 \input{chaps/introduction.tex}
 \input{chaps/preface.tex}
 
+%----------------------------------------------------------------------------------------
+% 目录
+%----------------------------------------------------------------------------------------
 
 \ctexset{
 contentsname = Contents \quad 目录
 }
 
+\pagestyle{english}
+
 \tableofcontents
+
+%----------------------------------------------------------------------------------------
 
 \mainmatter % 正文开始
 
+%----------------------------------------------------------------------------------------
+% 英文正文
+%----------------------------------------------------------------------------------------
 
 \ctexset{
 part/name = {Part~,},
@@ -87,6 +131,10 @@ chapter/number = \thechapter
 
 }
 
+%----------------------------------------------------------------------------------------
+% 中译正文
+%----------------------------------------------------------------------------------------
+
 
 \ctexset{
 chapter/aftername = \quad,
@@ -102,33 +150,39 @@ chapter/name = {第,章},
 chapter/number = \chinese{chapter}
 }
 
-\pagestyle{chinese}
-
 \part{中译版}
 
-\input{chaps/two_version/chinese/chap01.tex}
-\input{chaps/two_version/chinese/chap02.tex}
-\input{chaps/two_version/chinese/chap03.tex}
-\input{chaps/two_version/chinese/chap04.tex}
-\input{chaps/two_version/chinese/chap05.tex}
-\input{chaps/two_version/chinese/chap06.tex}
-\input{chaps/two_version/chinese/chap07.tex}
-\input{chaps/two_version/chinese/chap08.tex}
-\input{chaps/two_version/chinese/chap09.tex}
-\input{chaps/two_version/chinese/chap10.tex}
-\input{chaps/two_version/chinese/chap11.tex}
-\input{chaps/two_version/chinese/chap12.tex}
-\input{chaps/two_version/chinese/chap13.tex}
-\input{chaps/two_version/chinese/chap14.tex}
-\input{chaps/two_version/chinese/chap15.tex}
-\input{chaps/two_version/chinese/chap16.tex}
-\input{chaps/two_version/chinese/chap17.tex}
-\input{chaps/two_version/chinese/chap18.tex}
-\input{chaps/two_version/chinese/chap19.tex}
-\input{chaps/two_version/chinese/chap20.tex}
+\pagestyle{chinese}
 
+\input{chaps/chinese/chap01.tex}
+\input{chaps/chinese/chap02.tex}
+\input{chaps/chinese/chap03.tex}
+\input{chaps/chinese/chap04.tex}
+\input{chaps/chinese/chap05.tex}
+\input{chaps/chinese/chap06.tex}
+\input{chaps/chinese/chap07.tex}
+\input{chaps/chinese/chap08.tex}
+\input{chaps/chinese/chap09.tex}
+\input{chaps/chinese/chap10.tex}
+\input{chaps/chinese/chap11.tex}
+\input{chaps/chinese/chap12.tex}
+\input{chaps/chinese/chap13.tex}
+\input{chaps/chinese/chap14.tex}
+\input{chaps/chinese/chap15.tex}
+\input{chaps/chinese/chap16.tex}
+\input{chaps/chinese/chap17.tex}
+\input{chaps/chinese/chap18.tex}
+\input{chaps/chinese/chap19.tex}
+\input{chaps/chinese/chap20.tex}
+
+%----------------------------------------------------------------------------------------
 
 \backmatter % 后记开始
+
+%----------------------------------------------------------------------------------------
+% 后记
+%----------------------------------------------------------------------------------------
+
 
 \ctexset{
 part/name = \texorpdfstring{$\infty$}{},  % 增加符号这样就不用修正空格
@@ -143,8 +197,11 @@ part/number =
 
 }
 
-\pagestyle{chinese}
-\input{chaps/two_version/chinese/afterword.tex}
+%----------------------------------------------------------------------------------------
+
+\input{chaps/chinese/afterword.tex}
+
+%----------------------------------------------------------------------------------------
 
 \input{chaps/acknowledgement.tex}
 
