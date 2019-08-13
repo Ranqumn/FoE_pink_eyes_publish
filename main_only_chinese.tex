@@ -1,8 +1,8 @@
-\documentclass[UTF8,zihao=5]{ctexbook}
+\documentclass[fontset=none,UTF8,zihao=5]{ctexbook}
 
-\input{struction.tex}
+\input{struction_hack.tex}
+\input{struction_font.tex}
 
-\pagestyle{chinese} % 全篇使用 chinese 页眉样式
 
 % \usepackage{showframe} % 边框显示
 
@@ -21,6 +21,14 @@ nomarginpar, % 暴力去除边注区域
 textwidth=346.5bp, % 每行 33 个字
 textheight=498.75bp % 一页 32 行
 ]{geometry}
+
+\input{struction_paragraph.tex}
+
+\input{struction_markup-style.tex}
+
+\pagestyle{chinese} % 全篇使用 chinese 页眉样式
+
+\input{struction_other.tex}
 
 
 \title{Fallout Equestria \\ 辐射小马国 \bigskip \\ {\Large Pink Eyes \\ 粉色双眸}}

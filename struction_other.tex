@@ -1,0 +1,61 @@
+%----------------------------------------------------------------------------------------
+%	数学相关
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amssymb,amsthm}
+% \usepackage{siunitx}
+
+% NOTE: 使用统一风格的字体来表示
+
+\newfontfamily\engfontapprox{FandolFang-Regular.otf}[Scale=1.1]
+
+\newcommand{\engapprox}{{\engfontapprox ≈}}
+
+%----------------------------------------------------------------------------------------
+%	目录
+%----------------------------------------------------------------------------------------
+
+\setcounter{secnumdepth}{0} % 取消节编号
+
+%----------------------------------------------------------------------------------------
+%	LINKS & hyperref
+%----------------------------------------------------------------------------------------
+
+\usepackage{url}
+
+% 强制 URL 换行 via: https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+  \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+  \do\Y\do\Z}
+
+
+
+\usepackage[xetex]{hyperref}
+
+\hypersetup{breaklinks=true,
+            pdfauthor={RandomQuantum},
+            pdftitle={Fallout Equestria: Pink Eyes 辐射小马国：粉色双眸},
+            pdfcreator={XeLaTeX with CTeX and hyperref},
+            pdfkeywords={FoE}
+            }
+
+%----------------------------------------------------------------------------------------
+% 目录问题解决
+%----------------------------------------------------------------------------------------
+
+% NOTE: 需要放在 hyperref 后面
+% 规定 chapter 的计数器的上级为 part，使得每个 part 后 chapter 清零
+% 暴力使用 setcounter{chapter}{0} 会使得 hyperref 错误
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+% via: [sectioning - How to reset chapter and section counter with \part - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/54383/how-to-reset-chapter-and-section-counter-with-part)
+
+
+
+

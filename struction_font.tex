@@ -1,0 +1,200 @@
+%----------------------------------------------------------------------------------------
+% 将 U+2014 破折号合字 暴力修正
+
+% via: https://github.com/CTeX-org/ctex-kit/issues/382#issuecomment-430873626
+
+\ExplSyntaxOn
+\xeCJK_new_class:n { PoZheHao }
+\__xeCJK_save_CJK_class:n { PoZheHao }
+\xeCJK_declare_char_class:nn { PoZheHao } { "2014 }
+\seq_map_inline:Nn \g__xeCJK_class_seq
+  {
+    \str_if_eq:nnF {#1} { PoZheHao }
+      {
+        \xeCJK_copy_inter_class_toks:nnnn { PoZheHao } {#1} { FullRight } {#1}
+        \xeCJK_copy_inter_class_toks:nnnn {#1} { PoZheHao } {#1} { FullRight }
+      }
+  }
+
+% NOTE: 解决「。——」这种情况报错问题
+% NOTE: 或者可以使用手动（正则表达式）放置空箱 `。\mbox{}——` 来解决
+% 
+% via: https://github.com/CTeX-org/ctex-kit/issues/382#issuecomment-491951413
+
+\prg_set_conditional:Npnn \__xeCJK_punct_if_right:N #1 { p , T , F , TF }
+  {
+    \if_int_compare:w \xeCJK_token_value_class:N #1 =
+                      \xeCJK_class_num:n { FullRight }
+      \prg_return_true:
+    \else:
+      \if_int_compare:w \xeCJK_token_value_class:N #1 =
+                        \xeCJK_class_num:n { PoZheHao }
+        \prg_return_true:
+      \else:
+        \prg_return_false:
+      \fi:
+    \fi:
+  }
+\ExplSyntaxOff
+
+% 有 0.5% 的过大误差 就先这样
+
+% NOTE: 对 思源系字体 一定要开启特性
+% 比如 `\setCJKmainfont{Noto Sans CJK SC}[Script=CJK Ideographic,Language=Chinese Simplified]`
+% 或者开启 fwid 特性 `[RawFeature = +fwid]`
+
+
+%----------------------------------------------------------------------------------------
+%	Fonts
+%----------------------------------------------------------------------------------------
+
+% 使用 Noto CJK
+
+% \newCJKfontfamily[notoserifcjksc]\notoserif{Noto Serif CJK SC}
+% \newCJKfontfamily[sarasagothicsc]\sarasagothic{Sarasa Gothic SC}
+
+
+% \newfontfamily\freesans{FreeSans}
+% \newfontfamily\lmmono{lmmono10-regular.otf} % Latin Modern Mono 默认的等距字体 NOTE: 该字体不区分前后引号
+
+% \setmainfont{Liberation Serif}[
+%   UprightFont       = *,
+%   ItalicFont        = * Italic,
+%   BoldFont          = * Bold,
+%   BoldItalicFont    = * Bold Italic,
+%   Scale             = 1.1
+% ]
+
+\setmainfont{Libertinus Serif}[
+  UprightFont       = *,
+  ItalicFont        = * Italic,
+  BoldFont          = * Semibold,
+  BoldItalicFont    = * Semibold Italic,
+  Scale             = 1.1
+]
+
+% \setmainfont{Linux Libertine O}[
+%   UprightFont       = *,
+%   ItalicFont        = * Italic,
+%   BoldFont          = * Semibold,
+%   BoldItalicFont    = * Semibold Italic,
+%   Scale             = 1.1
+% ]
+
+% Noto Serif 可用
+
+% FIXME: 切换成 Noto Serif 脚注不能工作 原因未知
+
+% \setmainfont{Noto Serif}[
+%   UprightFont       = * Light,
+%   ItalicFont        = * Light Italic,
+%   BoldFont          = * SemiBold,
+%   BoldItalicFont    = * SemiBold Italic,
+%   Scale             = 1.1
+% ]
+
+% \setmainfont{Source Serif Pro}[
+%   UprightFont       = *,
+%   ItalicFont        = * Italic,
+%   BoldFont          = * Semibold,
+%   BoldItalicFont    = * Semibold Italic,
+%   Scale             = 1.1
+% ]
+
+% \setmainfont{Latin Modern Roman}[
+%   UprightFont       = * 10 Regular,
+%   ItalicFont        = * 10 Italic,
+%   BoldFont          = * 10 Bold,
+%   BoldItalicFont    = * 10 Bold Italic,
+%   SmallCapsFont     = * Caps 10 Regular,
+%   SlantedFont       = * Slanted 10 Regular,
+%   Scale             = 1.1
+% ]
+
+\setsansfont{lmsans10}[
+  Extension         = .otf,
+  UprightFont       = *-regular,
+  ItalicFont        = *-oblique,
+  BoldFont          = *-bold,
+  BoldItalicFont    = *-boldoblique,
+  Scale             = 1.1
+]
+
+% \setsansfont{Source Sans Pro}[
+%   UprightFont       = * Regular,
+%   ItalicFont        = * Italic,
+%   BoldFont          = * Semibold,
+%   BoldItalicFont    = * Semibold Italic,
+%   Scale             = 1.1
+% ]
+
+
+\setmonofont{lmmono}[
+  Extension         = .otf,
+  UprightFont       = *10-regular,
+  ItalicFont        = *10-italic,
+  SmallCapsFont     = *caps10-regular,
+  Scale             = 1.1
+]
+
+\setCJKmainfont{Noto Serif CJK SC}[
+  UprightFont       = *,
+  BoldFont          = * Bold,
+  ItalicFont        = FandolKai-Regular,
+  Script            = CJK Ideographic,
+  Language          = Chinese Simplified
+]
+
+% NOTE: FandolKai 没有 Script 选项 
+% ATTENTION: FandolKai 在调用时需要与 Noto Serif CJK SC 在同一个目录下
+
+\setCJKsansfont{Noto Sans CJK SC}[
+  UprightFont       = * DemiLight,
+  BoldFont          = * Medium,
+  Script            = CJK Ideographic,
+  Language          = Chinese Simplified
+]
+
+\setCJKmonofont{FandolFang-Regular.otf}
+
+% via: CTeX 宏集的默认定义
+% NOTE: 放在暴力修正 Fandol 字体之前
+
+\newCJKfontfamily[zhfs]\fangsong{FandolFang-Regular.otf}
+\newCJKfontfamily[zhkai]\kaishu{FandolKai-Regular.otf}
+\newCJKfontfamily[zhhei]\heiti{FandolHei-Regular.otf}
+
+% 暴力修正 FandolKai Fandol-FangSong 的基线
+% via: https://github.com/clerkma/ptex-ng-dist/issues/5
+
+% \usepackage{etoolbox} % 提供 \appto NOTE: markup-style 中已载入
+
+\makeatletter
+\newcommand*\original@CJKsymbol{}
+\newcommand*\original@CJKpunctsymbol{}
+\let\original@CJKsymbol\CJKsymbol
+\let\original@CJKpunctsymbol\CJKpunctsymbol
+\newcommand*\raise@Fandol@CJK[1]{\raise0.08\ccwd\hbox{#1}}
+\appto\itshape{%
+  \let\CJKsymbol\raise@Fandol@CJK
+  \let\CJKpunctsymbol\raise@Fandol@CJK
+}
+\appto\kaishu{%
+  \let\CJKsymbol\raise@Fandol@CJK
+  \let\CJKpunctsymbol\raise@Fandol@CJK
+}
+\appto\fangsong{%
+  \let\CJKsymbol\raise@Fandol@CJK
+  \let\CJKpunctsymbol\raise@Fandol@CJK
+}
+\appto\upshape{%
+  \let\CJKsymbol\original@CJKsymbol
+  \let\CJKpunctsymbol\original@CJKpunctsymbol
+}
+% 修正包裹在 Fandol 字体中的脚注 另见 latex.ltx 6403 行
+\appto\reset@font{%
+  \let\CJKsymbol\original@CJKsymbol
+  \let\CJKpunctsymbol\original@CJKpunctsymbol
+}
+\makeatother
+

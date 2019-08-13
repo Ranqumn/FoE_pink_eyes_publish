@@ -1,0 +1,18 @@
+\XeTeXgenerateactualtext=1 % 让复制文本正确
+
+\usepackage{xpatch,etoolbox} % Hack
+
+\usepackage{nag} % 检查过时指令
+
+% 使用 XeLaTeX 
+\usepackage[no-sscript]{xltxtra} % NOTE: 脚注在换过一种英文字体后失效，所以这里禁止改变 \textsuperscript
+
+\usepackage{xunicode}
+
+\usepackage{textcomp} % 扩展特殊字符
+
+\defaultfontfeatures{Ligatures=TeX} % fontspec 使用 TeX 的语法打特殊字符
+
+
+
+

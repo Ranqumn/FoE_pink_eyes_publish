@@ -4,7 +4,6 @@
 
 \pagestyle{english}
 
-% \begin{english}
 {\englinespread
 
 \begin{center}
@@ -40,6 +39,12 @@
     \end{tabular}
 \end{table}
 
+\section*{EPUB Version by}
+
+\begin{center}
+    djazz
+\end{center}
+
 \section*{Typeset by}
 
 \begin{center}
@@ -74,12 +79,11 @@
 
 \begin{itemize}
     \item Published on Fimfiction: \url{https://www.fimfiction.net/story/931/fallout-equestria-pink-eyes}
-    \item English Ducument: \url{http://book.fallout-equestria.com/forum/viewtopic.php?f=3\&t=342}
+    \item English EPUB Ducument: \url{http://book.fallout-equestria.com/forum/viewtopic.php?f=3\&t=342}
     \item This Project on GitHub: \url{https://github.com/Ranqumn/FoE_pink_eyes_publish}
 \end{itemize}
 
 }
-% \end{english}
 
 % --------------------
 
@@ -161,12 +165,7 @@
 
 % 手动调整
 
-\fancyhf{} % 清空
-
-\fancyhead[LE,RO]{\thepage}
-
-\fancyhead[LO]{\sffamily \uppercase{Acknowledgements}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
+\fancyheadmanuallyenglish{Acknowledgements}
 
 % 
 
@@ -208,7 +207,7 @@
 
 ~\vfill
 
-\includegraphics[width=0.9\linewidth]{image22.png}
+\chapterintroimage{image22.png}
 
 \begin{motto}
     Do you believe in ghosts?

@@ -1,0 +1,31 @@
+%----------------------------------------------------------------------------------------
+% 西文排版
+%----------------------------------------------------------------------------------------
+
+% \usepackage[english]{babel}
+\usepackage{microtype} % 微排版
+
+% 设置西文段落行距
+% 参考：
+% - [zhlineskip: 增加范例，单独设置西文段落的行距 · Issue #425 · CTeX-org/ctex-kit · GitHub](https://github.com/CTeX-org/ctex-kit/issues/425)
+% - zhlineskip 宏包手册
+
+\newcommand{\englinespread}{% 创建 \englinespread 标记
+  \linespread{1.1} \selectfont % 西文整体行距调整 1.11 -> 1.1 调小
+}
+
+% NOTE: 使用这个会出现 headheight is too small 警告
+
+\usepackage[bodytextleadingratio=1.5]{zhlineskip} % 正文行高修正
+
+\newenvironment{englishpar}  % 新建「英文段落」环境
+{\addvspace\medskipamount}  % 段前间距，上文段落需结束
+{\par\addvspace\medskipamount} % 段后间距
+
+\newenvironment{englishlyric}{}{}  % 新建「英文歌词」环境
+
+% zhlineskip 宏包命令
+% \SetTextEnvironmentSinglespace{1} % 根据需要修改此数，默认值是 1，适合西文「单倍」行距
+
+\RestoreTextEnvironmentLeading{englishpar}
+\RestoreTextEnvironmentLeading{englishlyric}

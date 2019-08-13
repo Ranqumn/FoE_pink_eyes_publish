@@ -4,15 +4,15 @@
 
 \input{struction_only_english.tex}
 
-\pagestyle{english} % 全篇使用 english 页眉样式
+\pagestyle{english} % use english pagestyle
 
 
-\usepackage[b5paper,twoside, % B5 纸张 双面
-nomarginpar, % 暴力去除边注区域
-hcentering, % 左右等宽
-bindingoffset=7mm, % 装订线 7 mm
+\usepackage[b5paper,twoside, % B5 twoside
+nomarginpar,
+hcentering, % left = right
+bindingoffset=7mm, % binding 7 mm
 top=3.5cm,
-textheight=502pt % 42 行英文 textheight=\topskip + 41\baselineskip
+textheight=502pt % 42 lines; textheight=\topskip + 41\baselineskip
 ]{geometry}
 
 \title{Fallout Equestria \bigskip \\ {\Large Pink Eyes}}
@@ -21,9 +21,7 @@ textheight=502pt % 42 行英文 textheight=\topskip + 41\baselineskip
 
 \begin{document}
 
-\frontmatter % 前言开始
-
-% \layout % 版面查看
+\frontmatter
 
 \input{chaps/only_english_version/title.tex}
 \input{chaps/only_english_version/copyright.tex}
@@ -56,24 +54,14 @@ textheight=502pt % 42 行英文 textheight=\topskip + 41\baselineskip
 \input{chaps/english/chap20.tex}
 
 
-\backmatter % 后记开始
+\backmatter
 
-\fancyhf{} % 清空
+% NOTE: putting head style command here is OK
 
-\fancyhead[LE,RO]{\thepage}
-
-\fancyhead[LO]{\sffamily \uppercase{Afterword}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
+\fancyheadmanuallyenglish{Afterword}
 
 \input{chaps/english/afterword.tex}
 
-
-\fancyhf{} % 清空
-
-\fancyhead[LE,RO]{\thepage}
-
-\fancyhead[LO]{\sffamily \uppercase{Acknowledgements}} % 奇数页  \leftmark = 章节名称
-\fancyhead[RE]{\sffamily \uppercase{Fallout Equestria: Pink Eyes}} % 偶数页
 
 \input{chaps/only_english_version/acknowledgement.tex}
 

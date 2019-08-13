@@ -21,10 +21,10 @@
 
 ### 需要检查
 
-- 是否有侵权内容
+- [X] 是否有侵权内容
     - ~~分隔线图片~~ 已改为字符式分割线
     - 字体
-- 确定各样式
+- [X] 确定各样式
 
 
 ### TODO
@@ -33,6 +33,11 @@
 
 ### 已解决
 
+- [X] ~~更加详细的注释说明与清晰的文档结构~~
+- [X] ~~修改脚注样式~~
+- [X] ~~中英字体重新搭配~~
+- [X] ~~字体穿透数学公式~~
+- [X] ~~页眉与页脚样式~~
 - [X] **中英双语版心重新设计**
 - [X] ~~增加致谢人员（CTeX-org）~~
 - [X] ~~英文斜体空格修正~~
@@ -60,6 +65,8 @@
 - 额外字体需安装
     - Noto Serif CJK SC
     - Noto Sans CJK SC
+    - Libertinus Serif
+    - Noto Serif
     - Font Awesome 5 Free
     - Raintree Regular
 
@@ -76,15 +83,16 @@
     - Ruixi Zhang       @RuixiZhang42
     - Xiangdong Zeng    @stone-zeng
     - Zeping Lee        @zepinglee
-    - @muzimuzhi
+    - Mu Zi             @muzimuzhi
     - ChenCheng Huang   @Liam0205
 
 ## 排版处理的讨论
 
 可见
 
-- [中文版心设计的疑难与最佳实践？ | Issue #47](https://github.com/CTeX-org/forum/issues/47)
-- [从版心设计到实物装订的工作流程与一些疑问 - 个人非商业用途的一个实践 | Issue #49](https://github.com/CTeX-org/forum/issues/49)
+- [脚注之间的间距与脚注样式](https://github.com/CTeX-org/forum/issues/50)
+- [中文版心设计的疑难与最佳实践？](https://github.com/CTeX-org/forum/issues/47)
+- [从版心设计到实物装订的工作流程与一些疑问 - 个人非商业用途的一个实践](https://github.com/CTeX-org/forum/issues/49)
 
 
 ## 文案编辑
