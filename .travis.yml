@@ -6,9 +6,11 @@ before_install:
   - mkdir $HOME/.fonts
   - cd $HOME/.fonts
   # Noto Serif CJK
-  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSerifCJKsc-{Regular,Bold}.otf
+  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSerifCJKsc-Regular.otf
+  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSerifCJKsc-Bold.otf
   # Noto Sans CJK
-  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSansCJKsc-{DemiLight,Medium}.otf
+  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSansCJKsc-DemiLight.otf
+  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSansCJKsc-Medium.otf
   # Font Awesome Free Solid
   - curl -O https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/otfs/Font%20Awesome%205%20Free-Solid-900.otf
   # cp fonts from repository
