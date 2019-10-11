@@ -1,0 +1,51 @@
+language: generic
+dist: bionic
+before_install:
+  # install fonts
+  - mkdir $HOME/.fonts
+  - cd $HOME/.fonts
+  # Noto Serif CJK
+  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSerifCJKsc-{Regular,Bold}.otf
+  # Noto Sans CJK
+  - curl -O https://raw.githubusercontent.com/googlefonts/noto-cjk/master/NotoSansCJKsc-{DemiLight,Medium}.otf
+  # Font Awesome Free Solid
+  - curl -O https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/otfs/Font%20Awesome%205%20Free-Solid-900.otf
+  # cp fonts from repository
+  - cp -a $TRAVIS_BUILD_DIR/fonts/. $HOME/.fonts
+  - fc-cache -fv
+  - fc-list
+install:
+  - sudo apt update && sudo apt upgrade
+
+  # Install Miniconda via: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - source "$HOME/miniconda/etc/profile.d/conda.sh"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+  - export PATH="$PATH:$HOME/miniconda/bin"
+
+  # Install R and tinytex
+  - conda install R
+  - Rscript -e 'install.packages("tinytex", repos="http://cran.us.r-project.org")'
+  - Rscript -e 'tinytex::install_tinytex()'
+  - Rscript -e 'tinytex:::install_yihui_pkgs()'
+
+  # Install CTeX
+  - tlmgr install ctex ms xecjk ulem zhlipsum zhnumber
+  # Fandol
+  - tlmgr install fandol
+  # Libertinus
+  - tlmgr install libertinus-fonts
+cache:
+  directories:
+    - "/tmp/texlive"
+    - "$HOME/.texlive"
+before_script:
+  - cd $TRAVIS_BUILD_DIR
+script:
+  - Rscript -e 'tinytex::latexmk("main.tex", engine = "xelatex")'
+
