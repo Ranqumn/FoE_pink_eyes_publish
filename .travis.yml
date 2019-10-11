@@ -48,4 +48,6 @@ before_script:
   - cd $TRAVIS_BUILD_DIR
 script:
   - Rscript -e 'tinytex::latexmk("main.tex", engine = "xelatex")'
+after_script:
+  - find ./ -type f -exec touch -a -m -t 201001010000 {} \;
 
