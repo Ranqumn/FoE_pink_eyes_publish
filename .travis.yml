@@ -1,6 +1,7 @@
 language: generic
 dist: bionic
 before_install:
+  - sudo apt update && sudo apt upgrade
   # install fonts
   - mkdir $HOME/.fonts
   - cd $HOME/.fonts
@@ -15,8 +16,6 @@ before_install:
   - fc-cache -fv
   - fc-list
 install:
-  - sudo apt update && sudo apt upgrade
-
   # Install Miniconda via: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p $HOME/miniconda
